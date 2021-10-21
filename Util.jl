@@ -54,7 +54,7 @@ function randVal(G)
     G.nodeVal = rand([-1.0, 0.0, 1.0], nv(G.g))
 end
 
-function pol(G, ans)
+function dis(G, ans)
     x = deepcopy(G.nodeVal)
     for id in ans
         x[id] = 0
@@ -62,5 +62,5 @@ function pol(G, ans)
     n = nv(G.g)
     W = inv(laplacian_matrix(G.g) + I + zeros(n, n))
     z = W * x
-    return norm(z)^2 / n
+    return dot(x,z)
 end
